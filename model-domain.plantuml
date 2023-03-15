@@ -1,0 +1,71 @@
+@startuml Dominio
+
+class Inventory {
+    -codigoProducto 
+    -nombreProducto 
+    -cantidadStock  
+    -stockMinimo    
+    -stockMaximo    
+    -cantidadOrden  
+    -precioCompra   
+    -precioVenta    
+}
+
+class Product {
+    +codigoProducto 
+    +nombreProducto 
+}
+
+abstract class Person {
+    codigoPersona  
+    nombrePersona  
+    direccion      
+    telefono       
+}
+
+class Employee {
+    codigoEmpleado 
+    cargoEmpleado  
+}
+
+class Charge {
+    codigoCargo    
+    nombreCargo    
+    descripcion    
+}
+
+class Customer {
+    codigoCliente  
+    nitCliente     
+}
+
+class Supplier {
+    codigoProveedor 
+}
+
+class Nit {
+    nitCliente     
+}
+
+class OrdenCompra {
+    codigoProducto 
+    nombreProducto 
+    cantidad       
+    precio         
+}
+
+class NotaEntrega {
+    codigoProducto 
+    nombreProducto 
+    cantidad       
+    precio         
+}
+
+class NotaRecibo {
+    codigoProducto 
+    nombreProducto 
+    cantidad       
+    precio         
+}
+
+@enduml
