@@ -1,0 +1,71 @@
+@startuml DominioDeClases
+
+class Inventory {
+    codigoProducto : int
+    nombreProducto : String
+    cantidadStock  : int
+    stockMinimo    : int
+    stockMaximo    : int
+    cantidadOrden  : int
+    precioCompra   : double
+    precioVenta    : double
+}
+
+class Product {
+    codigoProducto : int
+    nombreProducto : String
+}
+
+class Person {
+    codigoPersona  : int
+    nombrePersona  : String
+    direccion      : String
+    telefono       : String
+}
+
+class Employee {
+    codigoEmpleado : int
+    cargoEmpleado  : int
+}
+
+class Charge {
+    codigoCargo    : int
+    nombreCargo    : String
+    descripcion    : String
+}
+
+class Customer {
+    codigoCliente  : int
+    nitCliente     : int
+}
+
+class Supplier {
+    codigoProveedor : int
+}
+
+class Nit {
+    nitCliente     : int
+}
+
+class OrdenCompra {
+    codigoProducto : int
+    nombreProducto : int
+    cantidad       : int
+    precio         : double
+}
+
+class NotaEntrega {
+    codigoProducto : int
+    nombreProducto : String
+    cantidad       : int
+    precio         : double
+}
+
+class NotaRecibo {
+    codigoProducto : int
+    nombreProducto : String
+    cantidad       : int
+    precio         : double
+}
+
+@enduml
