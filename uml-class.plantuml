@@ -1,69 +1,131 @@
 @startuml Clases
 
-class Inventory {
-    codigoProducto : int
-    nombreProducto : String
-    cantidadStock  : int
-    stockMinimo    : int
-    stockMaximo    : int
-    cantidadOrden  : int
-    precioCompra   : double
-    precioVenta    : double
+Producto               "1    "      *--       "0..*   "        Inventario
+Catalogo               "1..*  "      --        "1..*  "        Producto
+      
+Cliente                "1   "        --         "0..*"         Factura
+Factura                "1   "        --         "1..* "        DetalleFactura
+DetalleFactura         "1..*   "     --       "1 "             Producto
+      
+Empleado               "1 "          --       "1..*   "        FacturaCompraProveedor
+FacturaCompraProveedor "1"           --       "1..* "          DetalleCompraProveedor
+
+'Esto es la relacion de las personas'
+Persona   <|--           Empleado
+Persona   <|---left      Cliente
+Persona   <|---right     Proveedor
+
+'Relaciones basicas entre las personas'
+Proveedor   "1   "     o--    "1..*  "   Catalogo
+Empleado    "1   "     o--    "1   "     Cargo
+Cliente     "1   "     *--    "1   "     NitCliente
+
+class Inventario {
+    CodigoInventario : int
+    codigoProducto   : int
+    nombreProducto   : String
+    cantidadStock    : int
+    stockMinimo      : int
+    stockMaximo      : int
+    cantidadOrden    : int
+    precioCompra     : double
+    precioVenta      : double
+
+    TamañoPorProducto()
+    TamañoGeneral()
+    CalculoVenta()
+    CalculoCompra()
 }
 
-class Product {
+class Producto {
     codigoProducto : int
     nombreProducto : String
+
+    getProduct()
+    setProduct()
 }
 
-abstract class Person {
+abstract class Persona {
     codigoPersona  : int
     nombrePersona  : String
     direccion      : String
     telefono       : String
+
+    getPerson()
+    setPerson()
 }
 
-class Employee {
+class Empleado {
     codigoEmpleado : int
     cargoEmpleado  : int
+
+    getEmpleado()
+    getCargo()
 }
 
-class Charge {
+class Cargo {
     codigoCargo    : int
     nombreCargo    : String
     descripcion    : String
+
+    getCargo()
+    setCargo()
 }
 
-class Customer {
+class Cliente {
     codigoCliente  : int
     nitCliente     : int
+
+    getCliente()
+    setCliente()
 }
 
-class Supplier {
+class Proveedor {
     codigoProveedor : int
+
+    getProveedor()
+    setProveedor()
 }
 
-class Nit {
+class Catalogo {
+    codigoCatalogo : int
+
+    getCatalogo()
+    setCatalogo()
+}
+
+class NitCliente {
     nitCliente     : int
+
+    getNitCliente()
+    setNitCliente()
 }
 
-class OrdenCompra {
-    codigoProducto : int
-    nombreProducto : int
-    cantidad       : int
-    precio         : double
+class Factura {
+    codigoFactura  : int
+    codigoCliente  : int
+    fecha          : Date
+    montoTotal     : double
 }
 
-class NotaEntrega {
-    codigoProducto : int
-    nombreProducto : String
-    cantidad       : int
-    precio         : double
+class DetalleFactura {
+    codigoDetalleFactura : int
+    codigoProducto       : int
+    cantidad             : int
+    precio: double
 }
 
-class NotaRecibo {
+class FacturaCompraProveedor {
+    codigoFactura   : int
+    codigoProveedor : int
+    codigoCatalogo  : int
+    montoTotal      : double
+}
+
+class DetalleCompraProveedor {
+    codigoProveedor: int
+    codigoCatalogo : int
     codigoProducto : int
-    nombreProducto : String
     cantidad       : int
     precio         : double
 }
